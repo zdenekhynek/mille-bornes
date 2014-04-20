@@ -34,7 +34,7 @@
         <!-- Add your site or application content here -->
         <!--<a href="https://www.strava.com/oauth/authorize?client_id=463&response_type=code&redirect_uri=http://localhost:8888/adeline-strava/project/">Authorize</a>-->
         <div class="header">
-            <a href="https://www.strava.com/oauth/authorize?client_id=463&response_type=code&redirect_uri=http://localhost:8888/adeline-strava/project/" class="login-with-strava-btn ir">Login-with-strava</a>
+            <a href="https://www.strava.com/oauth/authorize?client_id=463&response_type=code&redirect_uri=http://localhost:8888/mille-bornes/mille-bornes/strava-demo.php" class="login-with-strava-btn ir">Login-with-strava</a>
             <p class="log-in-status">Please log-in.</p>
             <p class="status"></p>
         </div>
