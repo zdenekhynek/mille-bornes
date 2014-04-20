@@ -1,6 +1,6 @@
-# [Mille Bornes]
+#[Mille Bornes]
 
-#URLs - this will change
+##URLs - this will change
 
 DOMAIN_NAME/index.php - Main homepage will be 
 DOMAIN_NAME/index.php/admin - Admin where you can update data in database by clicking Strava button, will take a while, as it's also requestion Google Directions, will add better feedback
