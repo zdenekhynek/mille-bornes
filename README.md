@@ -1,4 +1,4 @@
-#[Mille Bornes]
+#Mille Bornes
 
 ##URLs - this will change
 
@@ -16,8 +16,10 @@ There are 3 files of interest.
 
 ## Adding CSS a JS files
 
-Adding to application/views/templates/header.php and application/views/templates/footer.php, instead relative address, each link should start with <?php echo base_url(); ?>, 
-e.g. <link rel="stylesheet" href="<?php echo base_url(); ?>css/main.css">
+Adding to application/views/templates/header.php and application/views/templates/footer.php, instead relative address, each link should start with <?php echo base_url(); ?>, e.g. 
+```html 
+<link rel="stylesheet" href="<?php echo base_url(); ?>css/main.css">
+```
 
 ## Data
 
