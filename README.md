@@ -2,9 +2,9 @@
 
 ##URLs - this will change
 
-DOMAIN_NAME/index.php - Main homepage will be 
-DOMAIN_NAME/index.php/admin - Admin where you can update data in database by clicking Strava button, will take a while, as it's also requestion Google Directions, will add better feedback
-DOMAIN_NAME/index.php/map - test to show data on map
+- DOMAIN_NAME/index.php - Main homepage will be 
+- DOMAIN_NAME/index.php/admin - Admin where you can update data in database by clicking Strava button, will take a while, as it's also requestion Google Directions, will add better feedback
+- DOMAIN_NAME/index.php/map - test to show data on map
 
 ## CodeIgniter templates
 
