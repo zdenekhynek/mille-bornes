@@ -29,10 +29,10 @@ function initialize() {
     map = new google.maps.Map( document.getElementById( "map-canvas" ), mapOptions );
 
     //display results
-    if( activities ) {
-    	var len = activities.length;
+    if( dataActivities ) {
+    	var len = dataActivities.length;
     	for( var i = 0; i < len; i++ ) {
-    		displayActivity( activities[ i ] );
+    		displayActivity( dataActivities[ i ] );
     	}	
     }
     

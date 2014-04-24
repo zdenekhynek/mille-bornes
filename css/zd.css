@@ -1,0 +1,112 @@
+html, body, #map-canvas {
+	width: 100%;
+	height: 100%;
+}
+body, header nav {
+	background-color: #666;
+}
+
+/**
+* MAP
+**/
+.map-canvas {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+div.map {
+	width: calc(100% - 124px); 
+	height: 360px;
+	margin-left: 124px;
+	z-index: 0;
+	background: #aaaaaa;
+
+}
+
+section.page-content {
+	z-index: 1;
+}
+
+section.page-content {
+	pointer-events: none;
+}
+.home #home-scrollable {
+	pointer-events: auto;
+}
+
+.map .legend {
+	position: relative;
+	z-index: 2;
+	margin-left: 25px;
+	margin-top: 290px
+}
+
+
+/**
+*	GRAPH
+**/
+svg {
+	display: inherit;
+}
+
+.figure {
+	clear: both;
+}
+
+.figure rect {
+  font: 10px sans-serif;
+  fill: #dedd23;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+  float: left;
+}
+
+.tick text {
+	fill: white;
+	font-size: 14px;
+}
+
+.tick line {
+	stroke-width: 1px;
+	stroke: #e4e4e4;
+}
+
+/**
+* OVERALL
+**/
+.graph-overall .figure h4, .graph-overall .figure h5 {
+	font-size: 2em;
+	color: #dedd23;
+	font-weight: bold;
+}
+.graph-overall .figure h4 {
+	margin-top: 140px;
+}
+.graph-overall .figure h5 {
+	color: #e9e9e9;
+	margin: 0;
+	margin-top: -10px;
+}
+.graph-overall .figure span {
+	position: relative;
+	top: -5px;
+	font-size: .5em;
+}
+.graph-overall svg {
+	margin-top: -185px;
+}
+
+.graph-overall-back {
+	fill: #323232;
+}
+.graph-overall-front-blue {
+	fill: #1cd1a0;
+}
+.graph-overall-front-white {
+	fill: #e9e9e9;
+}

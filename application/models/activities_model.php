@@ -82,6 +82,7 @@
 					$this->db->insert( "activities_directions", $result );
 					echo "getting directions for " .$activity->id;
 
+
 				}
 
 				sleep( 5 );
@@ -93,11 +94,82 @@
 
 		}
 
-		public function get_activity_directions( $id, $start_latlng, $end_latlng ) {
+		/**
+		*	
+		* SELECT sum(time), CAST(start_date as DATE) as day FROM activities 
+		* GROUP BY CAST(start_date AS DATE)
+		*
+		**/
+		public function get_activity_times() {
+			
+			$query = $this->db->query( "SELECT activities.id, sum(time)/60 as dayTime, CAST(start_date as DATE) as day FROM activities GROUP BY day" );
+			return $query->result();
 
-			//Google_Directions_Api::get_directions( $id, $start_latlng, $end_latlng );
+		}
 
-		} 
+		/**
+		*	
+		* SELECT sum(duration) as dayDuration, CAST(start_date as DATE) as day FROM activities_directions, activities 
+		* WHERE activities_directions.activity_id = activities.id 
+		* GROUP BY CAST(start_date AS DATE)
+		*
+		**/
+		public function get_directions_times() {
+			
+			$query = $this->db->query( "SELECT activities.id, sum(duration)/60 as dayTime, CAST(start_date as DATE) as day FROM activities_directions, activities WHERE activities_directions.activity_id = activities.id GROUP BY day" );
+			return $query->result();
+
+		}
+
+		/**
+		*	SELECT activities.id, activities.time, activities_directions.activity_id, 
+		*	activities_directions.duration, (activities_directions.duration - activities.time) as diff 
+		*	FROM activities_directions, activities WHERE activities_directions.activity_id = activities.id 
+		*	AND activities_directions.duration != 0
+		**/
+		public function get_time_differences() {
+			
+			$query = $this->db->query( "SELECT activities.id, activities.time, activities_directions.activity_id, 
+			activities_directions.duration, (activities_directions.duration - activities.time) as diff 
+			FROM activities_directions, activities WHERE activities_directions.activity_id = activities.id 
+			AND activities_directions.duration != 0" );
+			return $query->result();
+
+		}
+
+		//SELECT SUM(price) as total FROM activities_directions
+		public function get_total_price() {
+
+			$query = $this->db->query( "SELECT SUM(price) as total FROM activities_directions" );
+			return $query->row( "total" );
+
+		}
+
+		/**
+		*	
+		* SELECT name, sum(price), start_date FROM activities_directions, activities 
+		* WHERE activities_directions.activity_id = activities.id 
+		* GROUP BY CAST(start_date AS DATE)
+		*
+		**/
+		public function get_prices() {
+			
+			//$this->db->select( "price" );
+			//$query = $this->db->get( "activities_directions" );
+			$query = $this->db->query( "SELECT sum(price) as daySum, CAST(start_date as DATE) as day FROM activities_directions, activities WHERE activities_directions.activity_id = activities.id GROUP BY day" );
+			return $query->result();
+
+		}
+
+		//SELECT SUM(distance) as total FROM activities
+		public function get_total_distance() {
+
+			$query = $this->db->query( "SELECT SUM(distance) as total FROM activities" );
+			return $query->row( "total" );
+
+		}
+
+		
 	}
 
 ?>

@@ -44,8 +44,8 @@ $route['admin'] = 'admin';
 
 $route['map'] = 'map';
 
-$route['(:any)'] = 'pages/view/$1';
-$route['default_controller'] = 'pages/view';
+/*$route['(:any)'] = 'pages/view/$1';*/
+$route['default_controller'] = 'main';
 $route['404_override'] = '';
 
 

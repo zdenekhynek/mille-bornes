@@ -64,7 +64,7 @@
 			$json = json_decode( $response );
 			$price = 0;
 			$duration = 0;
-		
+
 			if( isset( $json->routes ) && is_array( $json->routes ) && count( $json->routes ) > 0 ) {
 
 				//grab first route
@@ -83,15 +83,18 @@
 
 							$step = $leg->steps[ $i ];
 							$step_price = Google_Directions_Api::parse_step( $step ).",";
-							$step_duration = ( isset( $step->duration ) && isset( $step->duration->value ) ) ? $step->duration->value : 0;
+							//$step_duration = ( isset( $step->duration ) && isset( $step->duration->value ) ) ? $step->duration->value : 0;
 							$price = $price + $step_price;
-							$duration = $duration + $step_duration;
-
+						
 						}
 
 						//
 						$directions = new Activity_Directions();
 						$directions->price = $price;
+						
+						if( isset( $leg->duration ) && isset( $leg->duration->value ) ) {
+							$duration = $leg->duration->value;
+						}
 						$directions->duration = $duration;
 
 						return $directions;
