@@ -2,7 +2,7 @@
 
 	class Activities_model extends CI_Model {
 
-		public $activities = [];
+		public $activities = array();
 
 		public function __construct() {
 			
