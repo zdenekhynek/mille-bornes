@@ -2,7 +2,7 @@
 	
 	$STRAVA_AUTHORIZE_URL = "https://www.strava.com/oauth/authorize?";
 	$CLIENT_ID = "463";
-	$REDIRECT_URI = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ."/update";
+	$REDIRECT_URI = site_url() ."/admin/update";
 
 	$url = $STRAVA_AUTHORIZE_URL . "client_id=" .$CLIENT_ID. "&response_type=code&redirect_uri=".$REDIRECT_URI;
 

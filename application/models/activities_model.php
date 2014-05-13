@@ -131,7 +131,7 @@
 		public function get_activities( $start_date, $end_date ) {
 
 			//return $this->db->get( "activities" )->result();
-			$query = $this->db->query( "SELECT * FROM activities WHERE start_date >= '" .$start_date. "' AND start_date <= '" .$end_date. "'" );
+			$query = $this->db->query( "SELECT * FROM activities WHERE start_date >= '" .$start_date. "' AND start_date <= '" .$end_date. "' AND private != 1" );
 			return $query->result();
 		}
 
@@ -153,7 +153,7 @@
 
 				}
 
-				sleep( 5 );
+				sleep( 2 );
 
 				//echo $result;
 
@@ -170,7 +170,7 @@
 		**/
 		public function get_activity_times( $start_date, $end_date ) {
 			
-			$query = $this->db->query( "SELECT activities.id, sum(time)/60 as dayTime, CAST(start_date as DATE) as day FROM activities WHERE start_date >= '" .$start_date. "' AND start_date <= '" .$end_date. "' GROUP BY day" );
+			$query = $this->db->query( "SELECT activities.id, sum(time)/60 as dayTime, CAST(start_date as DATE) as day FROM activities WHERE start_date >= '" .$start_date. "' AND start_date <= '" .$end_date. "' AND private != 1 GROUP BY day" );
 			return $query->result();
 
 		}
@@ -184,7 +184,7 @@
 		**/
 		public function get_directions_times( $start_date, $end_date ) {
 			
-			$query = $this->db->query( "SELECT activities.id, sum(duration)/60 as dayTime, CAST(start_date as DATE) as day FROM activities_directions, activities WHERE activities_directions.activity_id = activities.id AND start_date >= '" .$start_date. "' AND start_date <= '" .$end_date. "' GROUP BY day" );
+			$query = $this->db->query( "SELECT activities.id, sum(duration)/60 as dayTime, CAST(start_date as DATE) as day FROM activities_directions, activities WHERE activities_directions.activity_id = activities.id AND start_date >= '" .$start_date. "' AND start_date <= '" .$end_date. "' AND private != 1 GROUP BY day" );
 			return $query->result();
 
 		}
@@ -200,7 +200,7 @@
 			$query = $this->db->query( "SELECT activities.id, activities.time, activities_directions.activity_id, 
 			activities_directions.duration, (activities_directions.duration - activities.time) as diff 
 			FROM activities_directions, activities WHERE activities_directions.activity_id = activities.id 
-			AND activities_directions.duration != 0 AND start_date >= '" .$start_date. "' AND start_date <= '" .$end_date. "'" );
+			AND activities_directions.duration != 0 AND start_date >= '" .$start_date. "' AND start_date <= '" .$end_date. "' AND private != 1" );
 			return $query->result();
 
 		}
@@ -208,7 +208,7 @@
 		//SELECT SUM(price) as total FROM activities_directions
 		public function get_total_price( $start_date, $end_date ) {
 
-			$query = $this->db->query( "SELECT SUM(price) as total FROM activities, activities_directions WHERE activities_directions.activity_id = activities.id AND start_date >= '" .$start_date. "' AND start_date <= '" .$end_date. "'" );
+			$query = $this->db->query( "SELECT SUM(price) as total FROM activities, activities_directions WHERE activities_directions.activity_id = activities.id AND start_date >= '" .$start_date. "' AND start_date <= '" .$end_date. "' AND private != 1" );
 			return $query->row( "total" );
 
 		}
@@ -222,7 +222,7 @@
 		**/
 		public function get_prices( $start_date, $end_date ) {
 			
-			$query = $this->db->query( "SELECT sum(price) as daySum, CAST(start_date as DATE) as day FROM activities_directions, activities WHERE activities_directions.activity_id = activities.id AND start_date >= '" .$start_date. "' AND start_date <= '" .$end_date. "' GROUP BY day" );
+			$query = $this->db->query( "SELECT sum(price) as daySum, CAST(start_date as DATE) as day FROM activities_directions, activities WHERE activities_directions.activity_id = activities.id AND start_date >= '" .$start_date. "' AND start_date <= '" .$end_date. "' AND private != 1 GROUP BY day" );
 			return $query->result();
 
 		}
@@ -230,7 +230,7 @@
 		//SELECT SUM(distance) as total FROM activities
 		public function get_total_distance( $start_date, $end_date ) {
 
-			$query = $this->db->query( "SELECT SUM(distance) as total FROM activities WHERE start_date >= '" .$start_date. "' AND start_date <= '" .$end_date. "'" );
+			$query = $this->db->query( "SELECT SUM(distance) as total FROM activities WHERE start_date >= '" .$start_date. "' AND start_date <= '" .$end_date. "' AND private != 1" );
 			return $query->row( "total" );
 
 		}
