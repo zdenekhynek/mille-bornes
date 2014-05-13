@@ -1,16 +1,12 @@
 <?php
 
-	//var_dump( $durations );
-	//var_dump( $prices );
-	//var_dump( $directions );
-	//var_dump( $activities );
-	
-	//var_dump( $time_diff );
-	//var_dump( $total_price );
-	//var_dump( $total_time_diff );
-	
-	$num_of_days = 22;
-	$savings = $total_price;
+	//$num_of_days = 22;
+	$start_date_unix = strtotime( $start_date );
+  $end_date_unix = strtotime( $end_date );
+  $date_diff = $end_date_unix - $start_date_unix;
+  $num_of_days = floor( $date_diff/( 60 * 60 * 24 ) );
+ 
+  $savings = $total_price;
 	$savings_per_day = $total_price / $num_of_days; 
 	//round up to two numbers
 	$savings_per_day = round( $savings_per_day * 100 ) / 100;

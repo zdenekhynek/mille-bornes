@@ -28,7 +28,8 @@
 
 		public function index() {
 
-			$data['title'] = "Title";
+			$data[ "title" ] = "Title";
+			$data[ "dates" ] = $this->activities_model->get_dates();
 
 			$this->load->view( "templates/header" ,$data );
 			$this->load->view( "pages/admin.php", $data );
@@ -51,11 +52,29 @@
 
 			}
 
-			$data['title'] = "Title";
+			$data[ "title" ] = "Title";
+			$data[ "dates" ] = $this->activities_model->get_dates();
 
 			$this->load->view( "templates/header" ,$data );
 			$this->load->view( "pages/admin.php", $data );
 			$this->load->view( "templates/footer", $data );
+
+		}
+
+		//store dates
+		public function dates() {
+
+			$start_date = ( isset( $_REQUEST[ "start_date" ] ) ) ? $_REQUEST[ "start_date" ] : "";
+			$end_date = ( isset( $_REQUEST[ "end_date" ] ) ) ? $_REQUEST[ "end_date" ] : "";
+			$this->activities_model->store_dates( $start_date, $end_date );
+
+			$data[ "title" ] = "Title";
+			$data[ "dates" ] = $this->activities_model->get_dates();
+
+			$this->load->view( "templates/header" ,$data );
+			$this->load->view( "pages/admin.php", $data );
+			$this->load->view( "templates/footer", $data );
+
 
 		}
 
