@@ -13,14 +13,8 @@
 
 		public function index() {
 
-			$dates = $this->activities_model->get_dates();
-			$start_date = $dates[ "start_date" ];
-			$end_date = $dates[ "end_date" ];
-
 			$data[ "title"] = "Map";
-			$data[ "activities" ] = $this->activities_model->get_activities( $start_date, $end_date );
-
-			print_r( $data[ "activities" ] );
+			$data[ "activities" ] = $this->activities_model->get_activities();
 
 			$this->load->view( "templates/header" ,$data );
 			$this->load->view( "pages/map", $data );

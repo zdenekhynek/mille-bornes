@@ -64,7 +64,7 @@ Route.prototype = {
 			var legs = route.legs;
 			if( legs && legs.length > 0 ) {
 
-				var leg = legs[ 0 ];
+				var leg = legs[0];
 				console.log( "leg", leg );
 
 				//get steps of the leg

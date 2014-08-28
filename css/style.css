@@ -9,6 +9,8 @@ body {
     color: #9c9b9b;
 }
 
+input {border: none}
+
 ul,
 ol,
 li,
@@ -124,11 +126,11 @@ header nav div:nth-child(1) {
 
 header nav div:nth-child(2) {
     padding-top: 10px;
-    height: calc(100% - 285px);
+    height: calc(100% - 245px);
 
 }
 header nav div:nth-child(3) {
-    height: 150px;
+    height: 100px;
 }
 /* text style */
 
@@ -165,7 +167,9 @@ header .main-nav strong {
 }
 
 header nav ul li strong:after {
-    content: " /";
+    content: " X";
+    font-size: 1em;
+    font-weight: 100;
 }
 
 
@@ -259,6 +263,7 @@ header nav ul li.active strong:after {
 
 header .sponsors {
     padding: 10px;
+    height: 120px;
     text-align: center;
     font-size: 0.75em;
     font-weight: 200;
@@ -425,6 +430,7 @@ font-size: 0.7em;
     background: #282828;
     padding-bottom: 60px;
     margin-bottom: 2px;
+    overflow: visible;
 }
 
 .home header h1 strong {
@@ -463,8 +469,7 @@ font-size: 0.7em;
 
 .home .graph p {
 
-    font-size: 0.8em;
-    font-style: ;
+    font-size: 0.9em;
     color: white;
     font-weight: 100;
     padding: 0;
@@ -475,6 +480,49 @@ font-size: 0.7em;
 .home .graph p strong {
 font-style: normal;
 }
+
+
+
+
+/***Home detailed data**/
+.data-grid {
+    overflow: visible;
+    padding-top: 60px;
+    display: block;
+}
+
+.commute-list .single-commute {
+
+    display: block;
+    width: 50%;
+    float:left;
+    margin-bottom: 2px;
+}
+.commute-list {display: block; margin-top: 60px}
+.commute-list .single-commute ul,
+.commute-list .single-commute img {
+    display: block;
+    float: left;
+}
+.commute-list .single-commute ul  {
+    display: block;
+    height: 162px;
+    background: #252424;
+    width: calc(100% - 164px);
+    float: left;
+}
+.commute-list .single-commute ul li div {display: inline-block; padding-left: 60px}
+.commute-list .single-commute ul li {display: block;height: 80px; line-height: 80px; }
+
+.commute-list .single-commute ul li:first-child {margin-bottom:2px; }
+
+
+
+.commute-list .single-commute ul .tfl {border-left: solid 2px white}
+.commute-list .single-commute ul .bike {border-left: solid 2px #f7f134}
+
+.commute-list .single-commute ul .icon {width: 30%; text-align: center;}
+.commute-list .single-commute ul .icon img {display: block; margin: 0 auto; text-align: center; height: 21px; width: auto;}
 /*****************************/
 
 /* About PAGE SPECIFIC STYLES */
@@ -613,7 +661,7 @@ font-style: normal;
     display: block;
     width: 960px;
     margin: 0 auto;
-    padding: 50px 0 0 0;
+    padding: 100px 0 0 0;
     font-size: 2em;
     font-weight: 900;
     line-height: 50px;
@@ -648,13 +696,14 @@ font-style: normal;
     text-align: center;
     text-transform: uppercase;
     color: #282828;
-    background-color: red;
     transition: all 0.5s ease;
     -webkit-transition-property: all 0.5s ease;
 }
 
 .blog-overall article img {
     min-height: 100%;
+        transition: all 0.5s ease;
+    -webkit-transition-property: all 0.5s ease;
 }
 
 .blog-overall article a header {
@@ -670,14 +719,37 @@ font-style: normal;
     text-transform: uppercase;
     color: white;
     background: none;
-    background: rgba(20,20,20,0.3);
+    background: rgba(20,20,20,0.8);
     transition: all 0.5s ease;
     -webkit-transition-property: all 0.5s ease;
+    color: #9c9b9b;
 }
+.blog-overall article a header span,
+.bottom-span {
+    color: #e1e745;
+    font-size: 1em;
+    font-weight: 100;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+.bottom-span {
+    margin: 30px auto
+}
+.blog-overall article a:hover  header {
+        background: rgba(20,20,20,0);
+        color: white
+
 }
 
-.blog-overall article:hover header {
-    background: red;
+
+
+.blog-overall article a:hover img  {
+transform: scale(1.05) rotate(-1deg);
+-webkit-transform: scale(1.05) rotate(-1deg);
+-moz-transform: scale(1.05) rotate(-1deg);
+-o-transform: scale(1.05) rotate(-1deg);
+-ms-transform: scale(1.05) rotate(-1deg);
 }
 
 .blog-overall article header h1,
@@ -700,6 +772,20 @@ font-style: normal;
     color: #282828;
 }
 
+/**blog post img gallery**/
+
+
+.image-gallery {display: block;
+    margin-top: 30px;
+width: 100%}
+.image-gallery li {
+    display: block;
+    width: 25%; float: left;
+    margin: 0 0 -2px 0; 
+}
+
+
+
 /********************************/
 
 /* SUPPORT     SPECIFIC STYLES */
@@ -708,6 +794,9 @@ font-style: normal;
 
 .support .be-happy-too {
     position: relative;
+    padding-left: 0;
+    max-width: 960px; 
+    margin: 60px auto;
 }
 
 .support header {
@@ -719,7 +808,66 @@ font-style: normal;
     background: url(../img/support/adeline.jpg);
     background-size: cover;
 }
+.support .be-happy-too .support-image {
+    display: block;
+    height: 200px;
+    margin: 30px auto;
+}
 
+.support .be-happy-too article {
+
+    text-align: left;
+    float: left;
+    display: inline-block; width: 100%;
+    height: auto
+    }
+
+.support  .be-happy-too .left {
+    margin-bottom: 60px;
+    width: 70%;
+    float: left;
+}
+.support  .be-happy-too .right {
+    width: 200px;
+    float: right;
+text-align: center;
+font-style: italic;
+font-size: 16px;
+}
+
+.support  .be-happy-too .right  span {
+    display: block;
+    font-style:normal; margin-top:20px
+}
+
+.support  .be-happy-too .right img {
+margin-bottom: 15px
+}
+
+.support .be-happy-too p {margin: 0; padding: 0}
+
+
+
+
+.support .be-happy-too article h1 { margin: 0}
+.support .be-happy-too article div {
+
+    float: left;
+    width: 70%
+    }
+
+
+
+
+
+.support .CTA {
+
+    clear:both;
+    margin: 0 auto;
+    margin-bottom: 30px
+    }
+
+/*gallery*/
 .support .support-gallery {
     margin: 0 auto;
     overflow: visible;
@@ -760,6 +908,8 @@ font-style: normal;
     content: " X ";
     color: white;
     font-weight: 100;
+    transition: all 0.5s ease;
+    -webkit-transition-property: all 0.5s ease;
 }
 
 
@@ -767,14 +917,33 @@ font-style: normal;
     clear: both;
 }
 
+.support .support-gallery ul li img{
+   transition: all 0.5s ease;
+    -webkit-transition-property: all 0.5s ease;
+}
+
 .support .support-gallery ul li:hover .descr {
     color: rgba(20,20,20,0);
     background: rgba(225,231,69,0);
 }
+.support .support-gallery ul li:hover .descr p:first-child:after {
+    content: " X ";
+    color: rgba(20,20,20,0);;
+    font-weight: 100;
+}
+
+.support .support-gallery ul li:hover img{
+transform: scale(1.05) rotate(-1deg);
+-webkit-transform: scale(1.05) rotate(-1deg);
+-moz-transform: scale(1.05) rotate(-1deg);
+-o-transform: scale(1.05) rotate(-1deg);
+-ms-transform: scale(1.05) rotate(-1deg);
+}
+
 
 .support .support-gallery span {display: block;
 margin: 0 auto;
-height: 10px
+height: 10px;
 width10px;
 background: red;
 }
@@ -790,6 +959,7 @@ background: red;
     line-height: 60px;
     color: #282828;
     background: #e5e53e;
+    clear: both;
     transition: all 0.3s ease;
     -webkit-transition-property: all 0.3s ease;
 }
@@ -800,16 +970,87 @@ background: red;
     border-bottom: solid 0 #b7b74e;
 }
 
-/**blog post img gallery**/
 
 
-.image-gallery {display: block;
-    margin-top: 100px;
-width: 100%}
-.image-gallery li {
+/* SUPPORT FORM */
+#shade {display: block; width: 100%; height: 180%; position: absolute;
+z-index: 9999;
+background: rgba(0,0,0,0.8);}
+#support-form{
+
+z-index: 99999;
+float: left;
+position: fixed;
+top: 0%;
+width: 80%;
+right: calc(15% - 70px);
+top: 50px;
+min-height: 600px;
+background:#282828;
+padding-bottom: 30px;
+overflow: visible;
+}
+
+
+#support-form form {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#close-support-form {
+text-align: right;
+display: block;
+padding: 10px;
+
+color: #282828;
+}
+#support-form header {
+
+    margin-bottom: 30px;
+    padding-bottom:30px; 
+    text-align: center;
+    text-transform: uppercase;
+    color: #282828;
+    background: #e1e745;
+}
+#support-form header h2,
+#support-form header h1
+{
+
+    margin: 0; padding: 0;
+}
+#support-form input {
+
     display: block;
-    width: 33.3%; float: left;
-    margin: 0 0 -2px 0; 
+    height: 60px;
+    margin: 20px auto;
+    width: 950px;
+    text-transform: uppercase;
+    padding-left: 10px;
+} 
+
+#support-form .name,#support-form .email
+ {
+
+    width: 460px; 
+    float: left;
+}
+#support-form .email {float:right; margin-right: -1px}
+
+#support-form .CTA {width: 460px; float: right; padding: 0; margin-left: 0}
+
+
+#support-form .file {
+  content: 'Picture';
+    display: block;
+    height: 60px;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 60px;
+    color: #eeeeee;
+    background: white;
+    float: left;
+    width: 460px; 
 }
 
 
@@ -836,3 +1077,6 @@ width: 100%}
     text-align: center;
     text-transform: uppercase;
 }
+
+
+

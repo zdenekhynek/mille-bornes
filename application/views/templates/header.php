@@ -21,8 +21,9 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Lato:100,200,400,900,300italic' rel='stylesheet' type='text/css'>
         
-        <script src="<?php echo base_url(); ?>js/responsiveslides.min.js"></script>
+  <script src="js/toggle-data.js"></script>
         <script src="<?php echo base_url(); ?>js/vendor/modernizr-2.6.2.min.js"></script>
+        
 		
 	</head>
 	<body>

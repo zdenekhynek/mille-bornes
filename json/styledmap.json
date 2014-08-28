@@ -1,0 +1,111 @@
+[
+  {
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "simplified" }
+    ]
+  },{
+    "featureType": "landscape",
+    "stylers": [
+      { "visibility": "simplified" },
+      { "color": "#525252" }
+    ]
+  },{
+    "featureType": "water",
+    "stylers": [
+      { "visibility": "simplified" },
+      { "color": "#464646" }
+    ]
+  },{
+    "featureType": "road",
+    "stylers": [
+      { "visibility": "simplified" }
+    ]
+  },{
+    "featureType": "road.highway",
+    "stylers": [
+      { "visibility": "simplified" },
+      { "color": "#464646" }
+    ]
+  },{
+    "featureType": "road.arterial",
+    "stylers": [
+      { "visibility": "simplified" },
+      { "color": "#464646" },
+      { "weight": 1.6 }
+    ]
+  },{
+    "featureType": "road.local",
+    "stylers": [
+      { "visibility": "simplified" },
+      { "color": "#464646" },
+      { "weight": 0.5 }
+    ]
+  },{
+    "featureType": "poi",
+    "stylers": [
+      { "color": "#4a4a4a" }
+    ]
+  },{
+    "featureType": "poi.attraction",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.business",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.medical",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.place_of_worship",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.school",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.sports_complex",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "transit.line",
+    "stylers": [
+      { "visibility": "simplified" },
+      { "color": "#666565" }
+    ]
+  },{
+    "featureType": "transit.station.airport",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#666565" }
+    ]
+  },{
+    "featureType": "transit.line",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      { "visibility": "simplified" },
+      { "color": "#666565" }
+    ]
+  },{
+    "featureType": "transit",
+    "elementType": "labels.icon",
+    "stylers": [
+      { "visibility": "simplified" }
+    ]
+  },{
+    "featureType": "transit.line",
+    "stylers": [
+      { "visibility": "simplified" },
+      { "weight": 0.4 }
+    ]
+  }
+]

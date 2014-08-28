@@ -10,16 +10,35 @@
  <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">  <link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css" media="screen">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Lato:100,200,400,900,300italic' rel='stylesheet' type='text/css'>
-  <script src="scripts/responsiveslides.min.js"></script>
+  <script src="js/form.js"></script>
 
 </head>
 <body>
+                <div id="support-form" >
+                  <header>
+                    <a href="#" id="close-support-form" >X</a>
+                    <H1>You are awesome !</h1>
+                    <H2>Thanks for playing the game</h2>
+                  </header>
+                  <form>
+                      <input type="text" placeholder="Your name" class="name"> 
+                      <input type="text" placeholder="Your Email" class="email">
+                      <input type="text" placeholder="postcode, street and house number" class="address" > 
+                      <input type="text" placeholder="City and country" class="address">  
+                      <input type="file" name="browse1" value="browse1" class="file">
+
+                      <input type="submit" class="CTA" >
+
+                  </form> 
+                </div>
+                <div id="shade"></div>
+
     <header>
       <nav class="main-header">
         <div class="logo" >
-          <a href="index.html"><img src="img/nav/logo5.png"></a>
+          <a href="index.php"><img src="img/nav/logo5.png"></a>
         </div>
         <div class="main-nav mainnav">
           <ul>
@@ -30,11 +49,10 @@
           </ul>
         </div>
         <div class="sponsors">
-          <p>Those nice people helped me achieve this.<em>Thank you<br/>for ever.</em></p>
+          <p>Thank you<br/>for ever.</em></p>
           <ul style="margin-top:10px">
             <li>Jack | photos</li>
             <li>Zdenek | dev</li>
-          </ul>
         </div>
        </nav>
     </header>
@@ -56,24 +74,43 @@
             <h2>Seriously, it means a <strong>hell of a lot</strong></h2>
         </header>
           
- <section class="description-with-img be-happy-too page-content about">
-            <h3>
-            You could be happy too: treat yourself to a cool goodie
-            </h3>
-            <h4>Here is the deal</h4>
-            <p>
-              Send me a happy picture featuring you and your bike to be displayed in the hall of joy down here.<br/>
-              And in exchange, I'll send you THIS :
-            </p>
-            <ARTICLE>
-             <img src="img/support/sticker.png" />
-             <h1>sticky sticker</h1>
-             <p>
-              stick it on your frame, on your moleskine, or on your nipples when running the marathon, 55mm solid vinyl wow, much versatile.
-              </p>
-            </ARTICLE> 
+<section class="description-with-img be-happy-too page-content about">
 
-              <a href="" class="CTA">I want a sticker too !</a>  
+          <article class="">
+
+            <h3>
+            You could be happy too:<br/>treat yourself to a cool goodie
+            </h3>
+
+              <img src="img/support/support.png" class="support-image" heigh="200">
+
+            <h4>Here is the deal</h4>
+
+            <p>
+              Send me a happy picture featuring you and your bike to be displayed in the hall of joy down here.
+              And in exchange, I'll send you this Sticky Sticker. On your bike-frame, on your moleskine, or on your nipples when running the marathon, 35mm solid vinyl. Wow, much versatile.
+            </p>
+              
+
+            <h4>Is it that easy ?</h4>
+            <p style="padding-bottom:60px">
+              Yep. As one, two, three.<br/>Allow me a little bit of time to send the stickers over, I will still be quite busy cycling.<br/>
+              I promise to never miss-use the informations you provide. Because you've got my back, so I've got yours too.<br/>
+              Thanks !
+             </p>
+            </article>
+            <!-- <article class="right">
+            <img src="img/support/sticker.png" />
+            <p>
+              Stick it on your frame, on your moleskine, or on your nipples when running the marathon,<br/><span>35mm solid vinyl.<br/>Wow, much versatile.</span>
+
+            </p>
+            </article>-->
+
+
+
+
+              <a href="" class="CTA" id="support-want" >I want a sticker too !</a>  
 
           </section>
 
@@ -82,66 +119,77 @@
             <ul>
               <li><img src="img/support/gallery/1.jpg" >
                 <div class="descr">
-                  <p class="name">Name name </p>
-                  <p class="city">from city city</p>
+                  <p class="name">Tom</p>
+                  <p class="city">from London</p>
                 </div>
               </li>
 
               <li><img src="img/support/gallery/2.jpg" >
                 <div class="descr">
-                  <p class="name">Name name </p>
-                  <p class="city">from city city</p>
+                  <p class="name">Jack</p>
+                  <p class="city">from Swansea</p>
                 </div>
               </li>
 
               <li><img src="img/support/gallery/3.jpg" >
                 <div class="descr">
-                  <p class="name">Name name </p>
-                  <p class="city">from city city</p>
+                  <p class="name">JB</p>
+                  <p class="city">from Essex</p>
                 </div>
               </li>
 
               <li><img src="img/support/gallery/4.jpg" >
                 <div class="descr">
-                  <p class="name">Name name </p>
-                  <p class="city">from city city</p>
+                  <p class="name">Adeline</p>
+                  <p class="city">from Brussels</p>
                 </div>
               </li>
 
-              <li><img src="img/support/gallery/1.jpg" >
+              <li><img src="img/support/gallery/5.jpg" >
                 <div class="descr">
-                  <p class="name">Name name </p>
-                  <p class="city">from city city</p>
+                  <p class="name">Ho</p>
+                  <p class="city">from Shoreditch</p>
                 </div>
               </li>
 
-              <li><img src="img/support/gallery/2.jpg" >
+              <li><img src="img/support/gallery/6.jpg" >
                 <div class="descr">
-                  <p class="name">Name name </p>
-                  <p class="city">from city city</p>
+                  <p class="name">Henry</p>
+                  <p class="city">from Edinburgh</p>
                 </div>
               </li>
 
-              <li><img src="img/support/gallery/3.jpg" >
+              <li><img src="img/support/gallery/7.jpg" >
                 <div class="descr">
-                  <p class="name">Name name </p>
-                  <p class="city">from city city</p>
+                  <p class="name">Dimi3</p>
+                  <p class="city">from Latvia</p>
                 </div>
               </li>
-              <li><img src="img/support/gallery/4.jpg" >
+              <li><img src="img/support/gallery/8.jpg" >
                 <div class="descr">
-                  <p class="name">Name name </p>
-                  <p class="city">from city city</p>
+                  <p class="name">Xander</p>
+                  <p class="city">from Archway</p>
                 </div>
               </li>
 
               </ul>
           </section>
-
-
-         
-
     </section>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50304515-1', '1000kilometers.co.uk');
+  ga('send', 'pageview');
+
+</script>
+
+
+
 
 </body>
 </html>

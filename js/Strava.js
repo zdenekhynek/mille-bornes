@@ -21,7 +21,6 @@ Strava.prototype = {
 			while( i-- ) {
 
 				var activityData = data[ i ];
-				console.log( activityData );
 				var activity = new StravaActivity( activityData );
 				self.activities[ activityData.id ] = activity;
 				self.$document.trigger( "activity", activity );

@@ -1,12 +1,16 @@
 <?php
 
-	//$num_of_days = 22;
-	$start_date_unix = strtotime( $start_date );
-  $end_date_unix = strtotime( $end_date );
-  $date_diff = $end_date_unix - $start_date_unix;
-  $num_of_days = floor( $date_diff/( 60 * 60 * 24 ) );
- 
-  $savings = $total_price;
+	//var_dump( $durations );
+	//var_dump( $prices );
+	//var_dump( $directions );
+	//var_dump( $activities );
+	
+	//var_dump( $time_diff );
+	//var_dump( $total_price );
+	//var_dump( $total_time_diff );
+	
+	$num_of_days = 22;
+	$savings = $total_price;
 	$savings_per_day = $total_price / $num_of_days; 
 	//round up to two numbers
 	$savings_per_day = round( $savings_per_day * 100 ) / 100;
@@ -28,7 +32,7 @@
 <header class="main-header">
       <nav>
         <div class="logo" >
-          <a href="index.html"><img src="img/nav/logo5.png"></a>
+          <a href="index.php"><img src="img/nav/logo5.png"></a>
         </div>
         <div class="main-nav">
           <ul>
@@ -39,7 +43,7 @@
           </ul>
         </div>
         <div class="sponsors">
-          <p>Those nice people helped me achieve this.<em>Thank you<br/>for ever.</em></p>
+          <em>Thank you<br/>for ever.</em></p>
           <ul style="margin-top:10px">
             <li>Jack | photos</li>
             <li>Zdenek | dev</li>
@@ -72,10 +76,10 @@
       </h1>
       <h2>here is how:</h2>
       </header>
-
+          <section id="data-graphs">
             <div class="graph graph-money">
              <h4>
-              Since April 1st 2014 i earned
+              Since May 1st 2014 i earned
             </h4>
               <h3>£<?php echo $savings; ?></h3>
               <p>Average of <strong>£<?php echo $savings_per_day; ?> a day</strong>, so about <strong>£<?php echo $savings_per_year; ?> a year</strong><br/>
@@ -95,7 +99,7 @@
               <div class="figure" style="width:450px; height:300px; display:block;"></div>
             </div>
 
-              <a href="" class="CTA">Detailed data</a>  
+              <a href="#" class="CTA" id="open-detailed-data">Detailed data</a>  
 
 
             <div class=" graph graph-time graph-overall center">
@@ -107,13 +111,219 @@
               The money saved in building a bike.
               </p>
               <div class="figure" style="width:450px; height:300px; display:block;">
-              	<h4><?php echo $total_distance; ?>/<span clas="total">1000 KM</span></h4>
+              	<h4 style="color:#1cd1a0;"><?php echo $total_distance; ?>/<span clas="total">1000 KM</span></h4>
               	<h5><?php echo $num_of_days ?>/<span clas="total">30 days</span></h5>
               </div>
             </div>
+          </section> <!-- end of data graph-->
+
+         <section id="data-grid">
+              <a href="#" class="CTA" id="close-detailed-data">back to graphs</a>  
+              <ul class="commute-list">
+                <li class="single-commute">
+                  <img src="img/home/mini-map.jpg" / >
+                  <ul>
+                    <li class="bike">
+                      <div class="icon "><img src="img/home/icons/bike.png"></div>
+                      <div class="time ">33:15</div>
+                      <div class="price ">£0.00</div>
+                    </li>
+
+                    <li class="tfl">
+                      <div class="icon "><img src="img/home/icons/transit-01.png"></div>
+                      <div class="time ">51:00</div>
+                      <div class="price ">£4.10</div>
+                    </li>
+                    </ul>
+                </li>
+
+                <li class="single-commute">
+                  <img src="img/home/mini-map.jpg" / >
+                  <ul>
+                    <li class="bike">
+                      <div class="icon "><img src="img/home/icons/bike.png"></div>
+                      <div class="time ">33:15</div>
+                      <div class="price ">£0.00</div>
+                    </li>
+
+                    <li class="tfl">
+                      <div class="icon "><img src="img/home/icons/transit-02.png"></div>
+                      <div class="time ">48:00</div>
+                      <div class="price ">£2.10</div>
+                    </li>
+                    </ul>
+                </li>
+                <li class="single-commute">
+                  <img src="img/home/mini-map.jpg" / >
+                  <ul>
+                    <li class="bike">
+                      <div class="icon "><img src="img/home/icons/bike.png"></div>
+                      <div class="time ">33:15</div>
+                      <div class="price ">£0.00</div>
+                    </li>
+
+                    <li class="tfl">
+                      <div class="icon "><img src="img/home/icons/transit-02.png"></div>
+                      <div class="time ">51:00</div>
+                      <div class="price ">£2.10</div>
+                    </li>
+                    </ul>
+                </li>
+                <li class="single-commute">
+                  <img src="img/home/mini-map.jpg" / >
+                  <ul>
+                    <li class="bike">
+                      <div class="icon "><img src="img/home/icons/bike.png"></div>
+                      <div class="time ">33:15</div>
+                      <div class="price ">£0.00</div>
+                    </li>
+
+                    <li class="tfl">
+                      <div class="icon "><img src="img/home/icons/transit-01.png"></div>
+                      <div class="time ">51:00</div>
+                      <div class="price ">£2.10</div>
+                    </li>
+                    </ul>
+                </li>                <li class="single-commute">
+                  <img src="img/home/mini-map.jpg" / >
+                  <ul>
+                    <li class="bike">
+                      <div class="icon "><img src="img/home/icons/bike.png"></div>
+                      <div class="time ">33:15</div>
+                      <div class="price ">£0.00</div>
+                    </li>
+
+                    <li class="tfl">
+                      <div class="icon "><img src="img/home/icons/transit-01.png"></div>
+                      <div class="time ">51:00</div>
+                      <div class="price ">£4.10</div>
+                    </li>
+                    </ul>
+                </li>
+
+                <li class="single-commute">
+                  <img src="img/home/mini-map.jpg" / >
+                  <ul>
+                    <li class="bike">
+                      <div class="icon "><img src="img/home/icons/bike.png"></div>
+                      <div class="time ">33:15</div>
+                      <div class="price ">£0.00</div>
+                    </li>
+
+                    <li class="tfl">
+                      <div class="icon "><img src="img/home/icons/transit-02.png"></div>
+                      <div class="time ">48:00</div>
+                      <div class="price ">£2.10</div>
+                    </li>
+                    </ul>
+                </li>
+                <li class="single-commute">
+                  <img src="img/home/mini-map.jpg" / >
+                  <ul>
+                    <li class="bike">
+                      <div class="icon "><img src="img/home/icons/bike.png"></div>
+                      <div class="time ">33:15</div>
+                      <div class="price ">£0.00</div>
+                    </li>
+
+                    <li class="tfl">
+                      <div class="icon "><img src="img/home/icons/transit-02.png"></div>
+                      <div class="time ">51:00</div>
+                      <div class="price ">£2.10</div>
+                    </li>
+                    </ul>
+                </li>
+                <li class="single-commute">
+                  <img src="img/home/mini-map.jpg" / >
+                  <ul>
+                    <li class="bike">
+                      <div class="icon "><img src="img/home/icons/bike.png"></div>
+                      <div class="time ">33:15</div>
+                      <div class="price ">£0.00</div>
+                    </li>
+
+                    <li class="tfl">
+                      <div class="icon "><img src="img/home/icons/transit-01.png"></div>
+                      <div class="time ">51:00</div>
+                      <div class="price ">£2.10</div>
+                    </li>
+                    </ul>
+                </li>
+
+                                <li class="single-commute">
+                  <img src="img/home/mini-map.jpg" / >
+                  <ul>
+                    <li class="bike">
+                      <div class="icon "><img src="img/home/icons/bike.png"></div>
+                      <div class="time ">33:15</div>
+                      <div class="price ">£0.00</div>
+                    </li>
+
+                    <li class="tfl">
+                      <div class="icon "><img src="img/home/icons/transit-01.png"></div>
+                      <div class="time ">51:00</div>
+                      <div class="price ">£4.10</div>
+                    </li>
+                    </ul>
+                </li>
+
+                <li class="single-commute">
+                  <img src="img/home/mini-map.jpg" / >
+                  <ul>
+                    <li class="bike">
+                      <div class="icon "><img src="img/home/icons/bike.png"></div>
+                      <div class="time ">33:15</div>
+                      <div class="price ">£0.00</div>
+                    </li>
+
+                    <li class="tfl">
+                      <div class="icon "><img src="img/home/icons/transit-02.png"></div>
+                      <div class="time ">48:00</div>
+                      <div class="price ">£2.10</div>
+                    </li>
+                    </ul>
+                </li>
+                <li class="single-commute">
+                  <img src="img/home/mini-map.jpg" / >
+                  <ul>
+                    <li class="bike">
+                      <div class="icon "><img src="img/home/icons/bike.png"></div>
+                      <div class="time ">33:15</div>
+                      <div class="price ">£0.00</div>
+                    </li>
+
+                    <li class="tfl">
+                      <div class="icon "><img src="img/home/icons/transit-02.png"></div>
+                      <div class="time ">51:00</div>
+                      <div class="price ">£2.10</div>
+                    </li>
+                    </ul>
+                </li>
+                <li class="single-commute">
+                  <img src="img/home/mini-map.jpg" / >
+                  <ul>
+                    <li class="bike">
+                      <div class="icon "><img src="img/home/icons/bike.png"></div>
+                      <div class="time ">33:15</div>
+                      <div class="price ">£0.00</div>
+                    </li>
+
+                    <li class="tfl">
+                      <div class="icon "><img src="img/home/icons/transit-01.png"></div>
+                      <div class="time ">51:00</div>
+                      <div class="price ">£2.10</div>
+                    </li>
+                    </ul>
+                </li>
+
+              </ul>
+          </section> <!-- end of data grid-->
+
 
             </div>
-    </section>
+          </section>
+
+
 
     <script>
 
@@ -126,3 +336,4 @@
       var dataNumDays = <?php echo $num_of_days; ?>;
  
     </script>
+
