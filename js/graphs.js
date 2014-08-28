@@ -23,13 +23,13 @@ function createMoneyChart() {
 				.range( [ 0, $figure.width() ] );
 
 	//append bar
-	svg.selectAll( "bar" )
+	var bars = svg.selectAll( "bar" )
 		.data( dataPrices ).enter().append( "rect" )
-	    .attr( "height", function( d ) { return $figure.height() - y( d.daySum ); })
-	    .attr( "width", "14px" )
-	    .attr( "x", function( d,i ) { return ( i * 15 ) + margin ; } )
-	    .attr( "y", function( d ) { return y( d.daySum ) - bottomMargin } );
-
+		.attr( "x", function( d,i ) { return ( i * 15 ) + margin ; } )
+	    .attr( "y", function( d ) { return $figure.height() - bottomMargin; } )
+ 		.attr( "width", "14px" )
+	    .attr( "height", function( d ) { return 0; });
+	    
 	//append y-axis
 	var yAxis = d3.svg.axis()
 				.scale( y )
@@ -59,6 +59,29 @@ function createMoneyChart() {
 		.attr( "class", "y axis" )
 		.call( xAxis );
 
+	var animPlayed = false;
+	var playAnim = function() {
+
+		animPlayed = true;
+		bars.transition().duration( 500 ).delay( function( d, i ) { return i*100; } )
+		    .attr( "height", function( d ) { return $figure.height() - y( d.daySum ); })
+		    .attr( "y", function( d ) { return y( d.daySum ) - bottomMargin } );
+
+	};
+
+	$doc.on( "scroll", function( evt ) {
+
+		var docScrollTop = $doc.scrollTop();
+		if( docScrollTop > 500 ) {
+
+			if( !animPlayed ) {
+				playAnim();
+			}
+
+		}
+
+	} );
+
 }
 
 /**
@@ -86,21 +109,24 @@ function createTimeChart() {
 				.range( [ 0, $figure.width() ] );
 
 	//append directions bar
-	svg.selectAll( "bar" )
+	var grayBars = svg.selectAll( "bar" )
 		.data( dataDurationsTimes ).enter().append( "rect" )
-	    .attr( "height", function( d ) { return $figure.height() - y( d.dayTime ); })
-	    .attr( "width", "14px" )
 	    .attr( "x", function( d,i ) { return ( i * 15 ) + margin ; } )
-	    .attr( "y", function( d ) { return y( d.dayTime ) - bottomMargin } )
+	    .attr( "y", function( d ) { return $figure.height() - bottomMargin; } )
+ 		.attr( "width", "14px" )
+	    .attr( "height", function( d ) { return 0; })
 	    .style( "fill", "#858585" );
+	    
+	    
 
 	//append activity bar
-	svg.selectAll( "bar" )
+	var bars = svg.selectAll( "bar" )
 		.data( dataActivityTimes ).enter().append( "rect" )
-	    .attr( "height", function( d ) { return $figure.height() - y( d.dayTime ); })
 	    .attr( "width", "14px" )
-	    .attr( "x", function( d,i ) { return ( i * 15 ) + margin ; } )
-	    .attr( "y", function( d ) { console.log( d, d.dayTime ); return y( d.dayTime ) - bottomMargin } );
+		.attr( "x", function( d,i ) { return ( i * 15 ) + margin ; } )
+	    .attr( "y", function( d ) { return $figure.height() - bottomMargin; } )
+ 		.attr( "height", function( d ) { return 0; });
+	    
 
 	//append y-axis
 	var yAxis = d3.svg.axis()
@@ -130,6 +156,36 @@ function createTimeChart() {
 		.attr( "transform", "translate( " + margin + ", " + $figure.height() + " )" )
 		.attr( "class", "y axis" )
 		.call( xAxis );
+
+	var animPlayed = false;
+	var playAnim = function() {
+
+		animPlayed = true;
+
+		grayBars
+			.transition().duration( 500 ).delay( function( d, i ) { return 1000 + i*100; } )
+	   		.attr( "y", function( d ) { return y( d.dayTime ) - bottomMargin } )
+	    	.attr( "height", function( d ) { return $figure.height() - y( d.dayTime ); });
+
+		bars
+			.transition().duration( 500 ).delay( function( d, i ) { return 2000 + i*100; } )
+	    	.attr( "height", function( d ) { return $figure.height() - y( d.dayTime ); })
+	    	.attr( "y", function( d ) { console.log( d, d.dayTime ); return y( d.dayTime ) - bottomMargin } );
+
+	};
+
+	$doc.on( "scroll", function( evt ) {
+
+		var docScrollTop = $doc.scrollTop();
+		if( docScrollTop > 500 ) {
+
+			if( !animPlayed ) {
+				playAnim();
+			}
+
+		}
+
+	} );
 	
 }
 
@@ -165,26 +221,92 @@ function createTotalChart() {
     	.innerRadius( 125 )
     	.outerRadius( 140 )
     	.startAngle( 0 ) //converting from degs to radians
-	    .endAngle( distancePortion * 360 * ( Math.PI/180 ) );
+	    .endAngle( 0 );//distancePortion * 360 * ( Math.PI/180 ) );
+	    
+	var arcBlueTween = function( d, i, a ) {
 
-	svg.append("path")
-	    .attr("d", arc)
+		return function( t ) {
+			var arc = d3.svg.arc()
+    			.innerRadius( 125 )
+    			.outerRadius( 140 )
+    			.startAngle( 0 ) //converting from degs to radians
+	    		.endAngle( ( t * distancePortion ) * 360 * ( Math.PI/180 ) );
+	    	return arc(t);
+		}
+		
+	};
+
+	var arcWhiteTween = function( d, i, a ) {
+
+		return function( t ) {
+			var arc = d3.svg.arc()
+    			.innerRadius( 125 )
+    			.outerRadius( 115 )
+				.startAngle( 0 ) //converting from degs to radians
+	    		.endAngle( ( t * dayPortion ) * 360 * ( Math.PI/180 ) );
+	    	return arc(t);
+		}
+		
+	};
+
+	var animPlayed = false;
+	var playAnim = function() {
+
+		animPlayed = true;
+		frontBlueArc 
+			.transition()
+	    	.duration( 1000 )
+	    	.delay( 250 )
+	    	.ease( "linear" )
+	    	.attrTween( "d", arcBlueTween );
+
+	    frontWhiteArc
+	    	.transition()
+	    	.duration( 1000 )
+	    	.ease( "linear" )
+	    	.attrTween( "d", arcWhiteTween );
+
+	};
+
+	var frontBlueArc = svg.append("path")
 	    .attr( "class", "graph-overall-front-blue" )
-	    .attr("transform", "translate(230,140)" );
+	    .attr( "transform", "translate(230,140)" )
+	    .attr( "d", arc )
+	    .each( function(d) { this._endAngle = distancePortion * 360; } );
+	    /*.transition()
+	    	.duration( 1000 )
+	    	.ease( "linear" )
+	    	.attrTween( "d", arcTween );*/
 
 	//make days circle
 	var dayPortion = dataNumDays/30;
- 	var arc = d3.svg.arc()
+ 	arc = d3.svg.arc()
     	.innerRadius( 125 )
     	.outerRadius( 115 )
     	.startAngle( 0 ) //converting from degs to radians
-	    .endAngle( dayPortion * 360 * ( Math.PI/180 ) );
+	    .endAngle( 0 ); //.endAngle( dayPortion * 360 * ( Math.PI/180 ) );
 
-	svg.append("path")
+	var frontWhiteArc = svg.append("path")
 	    .attr("d", arc)
 	    .attr( "class", "graph-overall-front-white" )
 	    .attr("transform", "translate(230,140)" );
+
+	$doc.on( "scroll", function( evt ) {
+
+		var docScrollTop = $doc.scrollTop();
+		if( docScrollTop > 900 ) {
+
+			if( !animPlayed ) {
+				playAnim();
+			}
+
+		}
+
+	} );
+
 }
+
+var $doc = $( document );
 
 createMoneyChart();
 createTimeChart();
