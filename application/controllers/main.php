@@ -20,6 +20,7 @@
 			$data[ "activity_times" ] = $this->activities_model->get_activity_times();
 			$data[ "directions_times" ] = $this->activities_model->get_directions_times();
 			$data[ "activities" ] = $this->activities_model->get_activities();
+			$data[ "directions" ] = $this->activities_model->get_directions();
 			
 			$total_time_diff = 0;
 			foreach( $data[ "time_diff" ] as $key=>$value ) {

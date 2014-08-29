@@ -1,5 +1,5 @@
 <?php
-
+  
 	//var_dump( $durations );
 	//var_dump( $prices );
 	//var_dump( $directions );
@@ -26,6 +26,33 @@
 
   $total_distance = round( $total_distance/1000 );
   //$total_distance = round( $total_distance * 100 ) / 100;
+
+  function seconds_to_time( $seconds ) {
+
+    $hours = floor($seconds / 3600);
+    $mins = floor(($seconds - ($hours*3600)) / 60);
+    $secs = floor($seconds % 60);
+
+    if( $hours > 0 ) {
+
+      return add_zero( $hours ) . ":" .add_zero( $mins ). ":" .add_zero( $secs ); 
+
+    } else {
+
+      return add_zero( $mins ). ":" .add_zero( $secs );
+
+    }
+    
+  }
+
+  function add_zero( $string ) {
+
+    if( strlen( $string ) == 1 ) {
+      return "0" .$string;
+    } 
+    return $string;
+
+  }
 
 ?>
 
@@ -119,10 +146,79 @@
           </section> <!-- end of data graph-->
 
          <section id="data-grid">
+
               <div class="cta-wrapper">
                 <a href="#" class="CTA" id="close-detailed-data">back to graphs</a>  
               </div>
               <ul class="commute-list clearfix">
+                
+                <?php
+                  
+                  //go through directions and store them by id
+                  $directions_by_id = array();
+                  foreach( $directions as $direction ) {
+
+                    $directions_by_id[ $direction->activity_id ] = $direction;
+
+                  }
+                  
+                  //create objects we need to display
+                  $activities_by_id = array();
+                  foreach( $activities as $activity ) {
+
+                    $data = array( 
+                      "polyline" => $activity->polyline,
+                      "elapsed_time" => $activity->time );
+
+                    if( array_key_exists( $activity->id, $directions_by_id ) ) {
+
+                      $direction = $directions_by_id[ $activity->id ]; 
+                      $data[ "direction_time" ] = $direction->duration;
+                      $data[ "direction_price" ] = $direction->price;
+
+                    }
+
+                    $activities_by_id[ $activity->id ] = $data;
+
+                  }
+
+
+                  foreach( $activities_by_id as $activity ) {
+
+                    if( !empty( $activity ) ) {
+
+                      $elapsed_time = ( array_key_exists( "elapsed_time", $activity ) ) ? seconds_to_time( $activity[ "elapsed_time" ] ): "-";
+                      $direction_time = ( array_key_exists( "direction_time", $activity ) ) ? seconds_to_time( $activity[ "direction_time" ] ): "-";
+                      $direction_price = ( array_key_exists( "direction_price", $activity ) ) ? number_format( $activity[ "direction_price" ], 2 ): "-";
+
+                    ?>  
+
+                        <li class="single-commute">
+                          <img src="img/home/mini-map.jpg" / >
+                          <ul>
+                            <li class="bike">
+                              <div class="icon "><img src="img/home/icons/bike.png"></div>
+                              <div class="time "><?php echo $elapsed_time; ?></div>
+                              <div class="price ">£0.00</div>
+                            </li>
+
+                            <li class="tfl">
+                              <div class="icon "><img src="img/home/icons/transit-01.png"></div>
+                              <div class="time "><?php echo $direction_time; ?></div>
+                              <div class="price ">£<?php echo $direction_price; ?></div>
+                            </li>
+                            </ul>
+                        </li>
+
+                    <?
+
+                    }
+
+                  }
+
+                ?>
+
+                <!--
                 <li class="single-commute">
                   <img src="img/home/mini-map.jpg" / >
                   <ul>
@@ -317,7 +413,7 @@
                       <div class="price ">£2.10</div>
                     </li>
                     </ul>
-                </li>
+                </li> -->
 
               </ul>
           </section> <!-- end of data grid-->

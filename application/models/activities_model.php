@@ -6,6 +6,8 @@
 
 		public function __construct() {
 			
+			ini_set('display_errors', '1');
+			
 			require_once( "activity.php" );
 			require_once( "googleDirectionsApi.php" );
 
@@ -64,6 +66,12 @@
 		public function get_activities() {
 
 			return $this->db->get( "activities" )->result();
+
+		}
+
+		public function get_directions() {
+
+			return $this->db->get( "activities_directions" )->result();
 
 		}
 
