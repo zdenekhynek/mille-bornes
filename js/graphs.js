@@ -1,9 +1,21 @@
+var tooltip = d3.select("body")
+		.append("div")
+		.attr( "class", "graph-tip" )
+		.style("position", "absolute")
+		.style("z-index", "10")
+		.style("visibility", "hidden")
+		.text("a simple tooltip");
+var $tooltip = $( ".graph-tip" );
+var monthNames = [ "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December" ];
+
 /**
 *	MONEY CHART
 **/
 function createMoneyChart() {
 
 	var $figure = $( ".figure" );
+	var offset = $figure.offset();
 	var margin = 35;
 	var bottomMargin = 10;
 
@@ -22,13 +34,48 @@ function createMoneyChart() {
 				.domain( [ 0, 10 ] )
 				.range( [ 0, $figure.width() ] );
 
+	/*var tip = d3.tip()
+		.attr('class', 'graph-tip')
+		.offset([-10, 0])
+		.html(function(d) {
+			return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
+		});
+	svg.call(tip);*/
+	
 	//append bar
 	var bars = svg.selectAll( "bar" )
 		.data( dataPrices ).enter().append( "rect" )
 		.attr( "x", function( d,i ) { return ( i * 15 ) + margin ; } )
 	    .attr( "y", function( d ) { return $figure.height() - bottomMargin; } )
+	    .attr( "class", "bar" )
  		.attr( "width", "14px" )
-	    .attr( "height", function( d ) { return 0; });
+	    .attr( "height", function( d ) { return 0; })
+	    .on( "mouseover", function( d ) {
+	    		
+	    	var d3This = d3.select( this ); 
+	    	d3This.attr( "class", "bar hover" );
+	    	var date = new Date( d.day );
+	    	var dateString = monthNames[ date.getMonth()-1 ] + " " + date.getDate();
+	    	var savedText = "Saved £" + d.daySum + " on " + dateString + ".";
+	    	tooltip.text( savedText ); 
+	    	return tooltip.style( "visibility", "visible" );
+	    
+	    } )
+		.on( "mousemove", function( d ) {
+			
+			var d3This = d3.select( this ); 
+			var toolTipY = ( +this.getAttribute( "y" ) + offset.top - $tooltip.outerHeight( true ) - 10 ) + "px";
+			var toolTipX = ( +this.getAttribute( "x" ) + offset.left - $tooltip.outerWidth( true )/2 + parseInt( this.getAttribute( "width" ) )/2 ) + "px";
+			return tooltip.style( "top", toolTipY ).style( "left", toolTipX );
+		
+		} )
+		.on( "mouseout", function(){
+		
+			d3.select( this ).attr( "class", "bar" ); 
+	    	return tooltip.style( "visibility", "hidden" );
+		
+		} );
+ 
 	    
 	//append y-axis
 	var yAxis = d3.svg.axis()
@@ -89,7 +136,8 @@ function createMoneyChart() {
 **/
 function createTimeChart() {
 
-	var $figure = $( ".figure" );
+	var $figure = $( ".graph-time .figure" );
+	var offset = $figure.offset();
 	var margin = 65;
 	var bottomMargin = 10;
 
@@ -111,21 +159,72 @@ function createTimeChart() {
 	//append directions bar
 	var grayBars = svg.selectAll( "bar" )
 		.data( dataDurationsTimes ).enter().append( "rect" )
+		.attr( "class", "bar gray-bar" )
 	    .attr( "x", function( d,i ) { return ( i * 15 ) + margin ; } )
 	    .attr( "y", function( d ) { return $figure.height() - bottomMargin; } )
  		.attr( "width", "14px" )
 	    .attr( "height", function( d ) { return 0; })
-	    .style( "fill", "#858585" );
+	    .on( "mouseover", function( d ) {
+	    		
+	    	var d3This = d3.select( this ); 
+	    	d3This.attr( "class", "bar hover" );
+	    	var date = new Date( d.day );
+	    	console.log( d );
+	    	var dateString = monthNames[ date.getMonth()-1 ] + " " + date.getDate();
+	    	var savedText = "Would spend " + parseInt( d.dayTime ) + " minutes on public transport on " + dateString + "."; 
+	    	tooltip.text( savedText ); 
+	    	return tooltip.style( "visibility", "visible" );
 	    
+	    } )
+		.on( "mousemove", function( d ) {
+			
+			var d3This = d3.select( this ); 
+			var toolTipY = ( +this.getAttribute( "y" ) + offset.top - $tooltip.outerHeight( true ) - 10 ) + "px";
+			var toolTipX = ( +this.getAttribute( "x" ) + offset.left - $tooltip.outerWidth( true )/2 + parseInt( this.getAttribute( "width" ) )/2 ) + "px";
+			return tooltip.style( "top", toolTipY ).style( "left", toolTipX );
+		
+		} )
+		.on( "mouseout", function(){
+		
+			d3.select( this ).attr( "class", "bar gray-bar" ); 
+	    	return tooltip.style( "visibility", "hidden" );
+		
+		} );
 	    
 
 	//append activity bar
 	var bars = svg.selectAll( "bar" )
 		.data( dataActivityTimes ).enter().append( "rect" )
+		.attr( "class", "bar" )
 	    .attr( "width", "14px" )
 		.attr( "x", function( d,i ) { return ( i * 15 ) + margin ; } )
 	    .attr( "y", function( d ) { return $figure.height() - bottomMargin; } )
- 		.attr( "height", function( d ) { return 0; });
+ 		.attr( "height", function( d ) { return 0; })
+ 		.on( "mouseover", function( d ) {
+	    		
+	    	var d3This = d3.select( this ); 
+	    	d3This.attr( "class", "bar hover" );
+	    	var date = new Date( d.day );
+	    	var dateString = monthNames[ date.getMonth()-1 ] + " " + date.getDate();
+	    	var savedText = "Spent " + parseInt( d.dayTime ) + " minutes on bike on " + dateString + "."; 
+	    	tooltip.text( savedText ); 
+	    	return tooltip.style( "visibility", "visible" );
+	    
+	    } )
+		.on( "mousemove", function( d ) {
+			
+			var d3This = d3.select( this ); 
+			var toolTipY = ( +this.getAttribute( "y" ) + offset.top - $tooltip.outerHeight( true ) - 10 ) + "px";
+			var toolTipX = ( +this.getAttribute( "x" ) + offset.left - $tooltip.outerWidth( true )/2 + parseInt( this.getAttribute( "width" ) )/2 ) + "px";
+			return tooltip.style( "top", toolTipY ).style( "left", toolTipX );
+		
+		} )
+		.on( "mouseout", function(){
+		
+			d3.select( this ).attr( "class", "bar" ); 
+	    	return tooltip.style( "visibility", "hidden" );
+		
+		} );
 	    
 
 	//append y-axis
