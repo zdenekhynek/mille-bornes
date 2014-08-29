@@ -99,8 +99,9 @@
               <div class="figure" style="width:450px; height:300px; display:block;"></div>
             </div>
 
+            <div class="cta-wrapper">
               <a href="#" class="CTA" id="open-detailed-data">Detailed data</a>  
-
+            </div>
 
             <div class=" graph graph-time graph-overall center">
              <h4>
@@ -118,8 +119,10 @@
           </section> <!-- end of data graph-->
 
          <section id="data-grid">
-              <a href="#" class="CTA" id="close-detailed-data">back to graphs</a>  
-              <ul class="commute-list">
+              <div class="cta-wrapper">
+                <a href="#" class="CTA" id="close-detailed-data">back to graphs</a>  
+              </div>
+              <ul class="commute-list clearfix">
                 <li class="single-commute">
                   <img src="img/home/mini-map.jpg" / >
                   <ul>

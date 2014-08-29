@@ -947,8 +947,12 @@ height: 10px;
 width10px;
 background: red;
 }
+.cta-wrapper {
+    height: 60px;
+    text-align: center;
+}
 .CTA {
-    display: block;
+    display: inline-block;
     width: 300px;
     height: 60px;
     margin: 0 auto;
@@ -960,8 +964,8 @@ background: red;
     color: #282828;
     background: #e5e53e;
     clear: both;
-    transition: all 0.3s ease;
-    -webkit-transition-property: all 0.3s ease;
+    transition: all 0.2s ease;
+    -webkit-transition-property: all 0.2s ease;
 }
 
 .CTA:hover {
