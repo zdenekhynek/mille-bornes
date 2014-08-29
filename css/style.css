@@ -504,6 +504,12 @@ font-style: normal;
     display: block;
     float: left;
 }
+    .single-commute-map {
+        width: 164px;
+        height: 162px;
+        float: left;
+        background-color: black;
+    }
 .commute-list .single-commute ul  {
     display: block;
     height: 162px;
@@ -511,18 +517,36 @@ font-style: normal;
     width: calc(100% - 164px);
     float: left;
 }
-.commute-list .single-commute ul li div {display: inline-block; padding-left: 60px}
-.commute-list .single-commute ul li {display: block;height: 80px; line-height: 80px; }
+.commute-list .single-commute ul li div {
+    display: inline-block; 
+    width: 20%;
+}
+.commute-list .single-commute ul li {
+    display: block;
+    height: 80px; 
+    line-height: 80px; 
+}
 
-.commute-list .single-commute ul li:first-child {margin-bottom:2px; }
-
-
+.commute-list .single-commute ul li:first-child {
+    margin-bottom:2px; 
+}
 
 .commute-list .single-commute ul .tfl {border-left: solid 2px white}
 .commute-list .single-commute ul .bike {border-left: solid 2px #f7f134}
 
-.commute-list .single-commute ul .icon {width: 30%; text-align: center;}
-.commute-list .single-commute ul .icon img {display: block; margin: 0 auto; text-align: center; height: 21px; width: auto;}
+.commute-list .single-commute ul .icon {
+    text-align: center ;
+    width: 50%;
+    padding-left: 5%;
+}
+.commute-list .single-commute ul .icon img {
+    display: block; 
+    margin: 0 auto; 
+    text-align: center; 
+    height: 21px; 
+    width: auto;
+}
+
 /*****************************/
 
 /* About PAGE SPECIFIC STYLES */

@@ -6,6 +6,7 @@ $('#data-grid').hide();
 $('#open-detailed-data').on('click',function(){
         $('#data-graphs').hide();
         $('#data-grid').show(200);
+        $( document ).trigger( "appear-grid" );
         return false;
       });
 

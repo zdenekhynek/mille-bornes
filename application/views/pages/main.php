@@ -187,14 +187,16 @@
 
                     if( !empty( $activity ) ) {
 
+                      $polyline = ( array_key_exists( "polyline", $activity ) ) ? $activity[ "polyline" ]: "";
                       $elapsed_time = ( array_key_exists( "elapsed_time", $activity ) ) ? seconds_to_time( $activity[ "elapsed_time" ] ): "-";
                       $direction_time = ( array_key_exists( "direction_time", $activity ) ) ? seconds_to_time( $activity[ "direction_time" ] ): "-";
-                      $direction_price = ( array_key_exists( "direction_price", $activity ) ) ? number_format( $activity[ "direction_price" ], 2 ): "-";
+                      $direction_price = ( array_key_exists( "direction_price", $activity ) ) ? "£". number_format( $activity[ "direction_price" ], 2 ): "-";
 
                     ?>  
 
-                        <li class="single-commute">
-                          <img src="img/home/mini-map.jpg" / >
+                        <li class="single-commute clearfix">
+                          <div class="single-commute-map" data-polyline="<?php echo $polyline; ?>"></div> 
+                          <!--<img src="img/home/mini-map.jpg" / >-->
                           <ul>
                             <li class="bike">
                               <div class="icon "><img src="img/home/icons/bike.png"></div>
@@ -205,7 +207,7 @@
                             <li class="tfl">
                               <div class="icon "><img src="img/home/icons/transit-01.png"></div>
                               <div class="time "><?php echo $direction_time; ?></div>
-                              <div class="price ">£<?php echo $direction_price; ?></div>
+                              <div class="price "><?php echo $direction_price; ?></div>
                             </li>
                             </ul>
                         </li>
