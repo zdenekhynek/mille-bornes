@@ -15,7 +15,7 @@ if (!google.maps.Polyline.prototype.getBounds) {
 
 $( document ).on( "appear-grid", initSingleCommuteMaps );
 
-var mapOptions;
+var mapOptions, mapPopup;
 function initialize() {
 	
 	mapOptions = {
@@ -41,6 +41,8 @@ function initialize() {
 		]
     };
     map = new google.maps.Map( document.getElementById( "map-canvas" ), mapOptions );
+    mapPopup = new MapPopup( map );
+	mapPopup.init();
 
     //display results
     if( dataActivities ) {
@@ -120,10 +122,22 @@ function displayActivity( activity ) {
 	    strokeOpacity: 0.7,
 	    strokeWeight: 2
 	});
-	polyline.data = { id: activity.id };
+	polyline.data = { id: activity.id, name: activity.name, time: activity.time };
+	console.log( activity );
 
-	google.maps.event.addListener( polyline, "click", function( evt ) {
-		
+	google.maps.event.addListener( polyline, "click", function( evt ) {} );
+	google.maps.event.addListener( polyline, "mouseover", function( evt ) {
+
+		console.log( this.data );
+		polyline.setOptions( { strokeColor: "#ffffff" } );
+		mapPopup.showTrack( this.data.name, this.data.time );
+		mapPopup.updatePosition( evt.latLng );
+
+	} );
+	google.maps.event.addListener( polyline, "mouseout", function( evt ) {
+
+		polyline.setOptions( { strokeColor: "#d0c544" } );
+		mapPopup.hide();
 
 	} );
 

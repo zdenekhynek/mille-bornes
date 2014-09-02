@@ -4,6 +4,9 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrLD7OkZfmcYabPxe4cUezvSzZD5zcUWk&sensor=false&libraries=geometry"></script> 
     <script src="http://d3js.org/d3.v3.min.js"></script>
    
+    <script src="<?php echo base_url(); ?>js/MapMarker.js"></script>
+    <script src="<?php echo base_url(); ?>js/map/MapPopup.js"></script>
+    
     <script src="<?php echo base_url(); ?>js/main.js"></script>
     <script src="<?php echo base_url(); ?>js/graphs.js"></script>
 
